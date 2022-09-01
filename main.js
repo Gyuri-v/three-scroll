@@ -23,7 +23,8 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(-5, 2, 25);
+camera.position.set(0, 5, 35);
+// camera.rotation.x = 1;
 // camera.lookAt(0, 0, 0);
 scene.add(camera);
 
@@ -78,9 +79,9 @@ draw();
 // console.log(meshs[2].position.x);
 // console.log(meshs[3].position.x);
 // console.log(meshs[4].position.x);
-let currentSection = 0;
+let currentSection = 1;
 const setSection = function() {
-  const newSection = Math.round(window.scrollY / window.innerHeight);
+  const newSection = Math.min(4, Math.round(window.scrollY / window.innerHeight));
 
   console.log(currentSection, newSection);
 
@@ -88,6 +89,7 @@ const setSection = function() {
     gsap.to(camera.position, {
       duration: 1,
       x: meshs[newSection].position.x,
+      y: 2,
       z: meshs[newSection].position.z + 5,
     });
     currentSection = newSection;
