@@ -137,7 +137,7 @@ const cameraScroll = function () {
   let cameraPoints = [];
   let cameraMoves;
   let cameraMovePoints;
-  let lookPoints;
+  let lookPoints = [];
   let lookPointFirst;
   let lookMoves;
   let lookMovePoints;
@@ -152,14 +152,10 @@ const cameraScroll = function () {
     cameraMovePoints = cameraMoves.getSpacedPoints(200);
 
     // look
-    lookPoints = [
-      new THREE.Vector3(-5, 1, 20),
-      new THREE.Vector3(7, 1, 10),
-      new THREE.Vector3(-10, 1, 0),
-      new THREE.Vector3(10, 1, -10),
-      new THREE.Vector3(-5, 1, -20),
-    ];
-    lookPointFirst = new THREE.Vector3(-5, 1, 20);
+    for (let i = 0; i < meshsPoints.length; i++) {
+      lookPoints.push(meshsPoints[i].clone());
+    }
+    lookPointFirst = lookPoints[0].clone();
     lookMoves = new THREE.CatmullRomCurve3(lookPoints);
     lookMovePoints = lookMoves.getSpacedPoints(200);
   }
@@ -204,8 +200,6 @@ const cameraScroll = function () {
 
     let currentPoint = Math.round(percent * (cameraMovePoints.length - 1));
     let currentSection = Math.round(window.scrollY / window.innerHeight);
-
-    // console.log(lookPoints)
 
     // lerp
     camera.position.lerp(cameraMovePoints[currentPoint], 0.05);
