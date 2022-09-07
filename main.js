@@ -211,15 +211,37 @@ const cameraScroll = function () {
     }
   }
 
+  let currentSection = 0;
   const scroll = function () {
     let scrollTop = window.pageYOffset;
     let moveArea = container.offsetHeight - window.innerHeight;
     let percent = scrollTop / moveArea;
     let currentPoint = Math.round(percent * (movePoints.length - 1));
     let currentSection = Math.round(percent * (sections.length - 1));
+    // let newSection = Math.round(percent * (sections.length - 1));
+    // console.log(currentSection, newSection);
 
-    camera.position.set(movePoints[currentPoint].x, 10, movePoints[currentPoint].z + 20)
+    camera.position.lerpVectors(camera.position, new THREE.Vector3(movePoints[currentPoint].x, 5, movePoints[currentPoint].z + 15), 0.05);
+
+    const lookPoint = meshsPoints[0];
+    lookPoint.lerpVectors(lookPoint, meshsPoints[currentSection], 0.05);
+    camera.lookAt(lookPoint);
+
+
+    console.log(meshsPoints[currentSection], lookPoint);
+
+    
     // camera.lookAt(meshsPoints[currentSection].x, meshsPoints[currentSection].y, meshsPoints[currentSection].z );
+
+
+
+    // camera.position.set(movePoints[currentPoint].x, 10, movePoints[currentPoint].z + 20);
+    // camera.lookAt(meshsPoints[currentSection].x, meshsPoints[currentSection].y, meshsPoints[currentSection].z );
+    // if ( currentSection !== newSection ) {
+
+    //   camera.lookAt(meshsPoints[newSection].x, meshsPoints[newSection].y, meshsPoints[newSection].z );
+    //   currentSection = newSection;
+    // }
 
   }
 
