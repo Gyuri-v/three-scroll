@@ -57,7 +57,7 @@ scene.add(ambientLight, directionalLight);
 
 // loader
 const textureLoader = new THREE.TextureLoader();
-const meshTexture = textureLoader.load('/textures/floor_marble/Marble_Carrara_002_COLOR.jpg');
+const meshTexture = textureLoader.load('textures/floor_marble/Marble_Carrara_002_COLOR.jpg');
 
 // helper
 // const lightHelper = new THREE.SpotLightHelper( spotLight, 5 );
@@ -69,10 +69,10 @@ const meshTexture = textureLoader.load('/textures/floor_marble/Marble_Carrara_00
 
 
 // mesh - floor
-const floorNormalTex = textureLoader.load('/textures/floor_marble/Marble_Carrara_002_NORM.jpg');
-const floorRoughnessTex = textureLoader.load('/textures/floor_marble/Marble_Carrara_002_ROUGH.jpg');
-const floorAmbientTex = textureLoader.load('/textures/floor_marble/Marble_Carrara_002_OCC.jpg');
-const floorBaseTex = textureLoader.load('/textures/floor_marble/Marble_Carrara_002_COLOR.jpg');
+const floorNormalTex = textureLoader.load('textures/floor_marble/Marble_Carrara_002_NORM.jpg');
+const floorRoughnessTex = textureLoader.load('textures/floor_marble/Marble_Carrara_002_ROUGH.jpg');
+const floorAmbientTex = textureLoader.load('textures/floor_marble/Marble_Carrara_002_OCC.jpg');
+const floorBaseTex = textureLoader.load('textures/floor_marble/Marble_Carrara_002_COLOR.jpg');
 floorBaseTex.wrapS = THREE.RepeatWrapping;
 floorBaseTex.wrapT = THREE.RepeatWrapping;
 floorBaseTex.repeat.x = 10;
